@@ -1,15 +1,21 @@
 const gridContainer = document.querySelector(".grid-container")
 const square = document.querySelector(".square")
-const gridSizeButton = document.querySelector(".grid-size")
+const sidebar = document.querySelector(".sidebar")
+const gridSizeButton = document.querySelector(".slider")
 const blackColorButton = document.querySelector(".black-color")
 const randomColorButton = document.querySelector(".random-color")
 const gradientColorButton = document.querySelector(".gradient")
+const gridSizeText = document.querySelector('.slide-value')
+const whiteColorButton = document.querySelector('.eraser')
+const clearButton = document.querySelector('.clear')
+const buttons = document.querySelectorAll('button')
 
 let gridSelection = 256
 let gridPrompt = 16
 let blackGrid = 1
 let colorGrid = 0
 let gradientGrid = 0
+let whiteGrid = 0
 
 const start = createGrid()
 
@@ -28,33 +34,68 @@ function createGrid() {
     }
 }
 
+gridSizeButton.addEventListener("change", function() {
+    gridSizeText.textContent = `${gridSizeButton.value} x ${gridSizeButton.value}`
+}, false);
 
 gridSizeButton.addEventListener('click', () => {
     resetGrid()
-    gridPrompt = prompt('What Size Grid?')
+    gridPrompt = gridSizeButton.value
     gridSelection = Math.pow(gridPrompt, 2) 
-    gridSizeButton.textContent ='Reset Grid'
     createGrid()
 })
+
+sidebar.addEventListener('click', handleClick, false);
+
+function handleClick(e) {
+  const { target } = e;
+
+  // If a button has been clicked
+  if (target.classList.contains('button')) {
+
+    // Clear any active buttons 
+    buttons.forEach(button => button.classList.remove('activebutton'));
+
+    // Make the clicked button active
+    target.classList.add('activebutton');
+  }
+}
 
 blackColorButton.addEventListener('click', () => {
     blackGrid = 1
     colorGrid = 0
     gradientGrid = 0
+    whiteGrid = 0
 })
 
 randomColorButton.addEventListener('click', () => {
     blackGrid = 0
     colorGrid = 1
     gradientGrid = 0
+    whiteGrid = 0
 })
 
 gradientColorButton.addEventListener('click', () => {
     blackGrid = 0
     colorGrid = 0
     gradientGrid = 1
+    whiteGrid = 0
 })
 
+whiteColorButton.addEventListener('click', () => {
+    blackGrid = 0
+    colorGrid = 0
+    gradientGrid = 0
+    whiteGrid = 1
+    
+})
+
+clearButton.addEventListener('click', () => {
+    while (gridContainer.firstChild){
+        gridContainer.removeChild(gridContainer.lastChild)
+    }
+    createGrid()
+    });
 
 
 function colorSelection(e) {
@@ -77,6 +118,9 @@ function colorSelection(e) {
         let green = array[2]
         return `rgb(${red- 25.5}, ${green -25.5}, ${blue -25.5})`
     }
+    else if (whiteGrid == 1) {
+        return 'rgb(255, 255, 255)'
+    }
     else {
         return 'rgb(0, 0, 0)'
     }
@@ -90,6 +134,6 @@ function resetGrid() {
     blackGrid = 1
     colorGrid = 0
     gradientGrid = 0
-
+    whiteGrid = 0 
     return
 }

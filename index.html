@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <script src="./java.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch a Sketch</title>
@@ -12,10 +15,15 @@
     <h1 class="header">Etch a Sketch</h1>
     <div class="content-container">
         <div class="sidebar">
-            <button class="grid-size">Grid Size</button>
-            <button class="black-color">Black Colour</button>
-            <button class="random-color">Random Colour</button>
-            <button class="gradient">Gradient</button>
+            <div class="slidecontainer">
+                <p class="slide-value">50 x 50</p>
+                <input type="range" min="4" max="100" value="50" class="slider" id="myRange">
+              </div>
+            <button class="black-color button">Black Colour</button>
+            <button class="random-color button">Random Colour</button>
+            <button class="gradient button">Gradient</button>
+            <button class="eraser button">Eraser</button>
+            <button class="clear">Clear</button>
         </div>
         <div class="grid-container"></div>
     </div>
