@@ -11,6 +11,19 @@ body {
     border: solid 1px black;
     width: auto;
 }
+.content-container {
+    display: flex;
+    gap: 40px;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    border: solid 1px black;
+    width: 200px;
+    justify-content: center;
+}
+
 
 .grid-container {
     border: solid 1px black;
@@ -25,8 +38,8 @@ body {
 }
 
 .square {
-    /*border: solid 1px black;*/
     height: calc(500px / 16);
     width: calc(500px / 16);
+    color: white
 }
 
