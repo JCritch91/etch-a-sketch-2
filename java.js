@@ -34,9 +34,10 @@ function createGrid() {
     }
 }
 
-gridSizeButton.addEventListener("change", function() {
-    gridSizeText.textContent = `${gridSizeButton.value} x ${gridSizeButton.value}`
-}, false);
+
+gridSizeButton.oninput = function() {
+    gridSizeText.textContent = `${this.value} x ${this.value}`
+  }
 
 gridSizeButton.addEventListener('click', () => {
     resetGrid()
@@ -45,7 +46,7 @@ gridSizeButton.addEventListener('click', () => {
     createGrid()
 })
 
-sidebar.addEventListener('click', handleClick, false);
+sidebar.addEventListener('click', handleClick, false)
 
 function handleClick(e) {
   const { target } = e;

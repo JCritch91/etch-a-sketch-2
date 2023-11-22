@@ -3,7 +3,6 @@
 }
 
 body {
-
     background-image: url(https://cdn.pixabay.com/photo/2017/09/26/22/23/dark-green-2790337_1280.png);
     display: flex;
     flex-direction: column;
@@ -15,7 +14,10 @@ body {
 }
 
 .header {
-   
+    font-size: 60px;
+    font-weight: 800;
+    
+    color: rgb(215, 215, 215);
     width: auto;
 }
 .content-container {
@@ -49,11 +51,7 @@ body {
 .slidecontainer {
 text-align: center;}
 
-.footer {
-    text-align: center;
-    width: 100vw;
-    height: 5%;
-}
+
 
 .square {
     color: white
@@ -77,3 +75,21 @@ button:hover{
     color: white;
 }
 
+.footer {
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 5%;
+}
+
+#github {
+    max-height: 30px;
+    border-radius: 20px;
+    transition: transform .7s ease-in-out;
+}
+
+#github:hover{
+    transform: rotate(720deg);
+}
